@@ -1,0 +1,10 @@
+we learnt the basics of python and java and learnt about concepts like looping and 
+arrays in both the languages
+
+
+=Looping Concepts=
+ - for loop
+ - while loops
+ - Do While loop ( not being used  lot in the recent market/ world )
+
+== Time Complexity ++
