@@ -1,0 +1,39 @@
+e
+
+Input: arr, an array of non-negative bar heights
+Output: the total number of units of trapped water
+
+maxHeight = the largest value in arr
+trappedWater = 0
+
+for level from maxHeight down to 1:
+    containerOpen = false
+    potential = 0
+
+    for i from 0 to arr.length - 1:
+        if arr[i] >= level:
+            # This bar reaches the current water level and can be a wall.
+            if containerOpen:
+                # The current bar closes the gap started by a previous wall.
+                trappedWater = trappedWater + potential
+
+            # This bar is also the left wall for any following gap.
+            containerOpen = true
+            potential = 0
+
+        else if containerOpen:
+            # This column is below the current level and inside a bounded gap.
+            potential = potential + 1
+
+    # Any potential left over is an unbounded gap, so do not add it.
+
+return trappedWater
+
+Notes:
+- The wall test is arr[i] >= level, so taller bars remain walls at lower levels.
+- Each below-level column between two walls contributes one unit at this level.
+- Reset containerOpen and potential for every level.
+- Time: O(arr.length * maxHeight). Space: O(1). 
+
+and thats why the two pointer approach is better for this, with that the time complexity drops down to o(n) and the space complexity drops to O(1)
+
